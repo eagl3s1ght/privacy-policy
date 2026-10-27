@@ -55,14 +55,19 @@
   <h2>Fonts loaded from Google</h2>
   <p>The game loads its fonts from Google Fonts (<code>fonts.googleapis.com</code> / <code>fonts.gstatic.com</code>). When your device is online, Google receives your device's IP address and technical information as part of that request. No game data is sent in it. See Google's privacy policy for how Google handles this.</p>
 
+  <h2>Online co-op (playing with a friend on another phone)</h2>
+  <p>Online play is optional and only starts when you tap <em>Two players → Online</em> and create or join a game. To connect the two phones, the app uses the free public connection service of the open-source project PeerJS (<code>0.peerjs.com</code>). That service sees each phone's IP address, a random connection ID that contains the game's 6-character room code, and the technical connection details the phones exchange to find each other. It does not receive any game data, scores or initials.</p>
+  <p>After the connection is made, game data (button presses and the game state) flows directly between the two phones over an encrypted WebRTC connection. To find a route between the phones, they may contact public STUN servers from Google (<code>stun.l.google.com</code>) and Cloudflare (<code>stun.cloudflare.com</code>), and, if a direct route is impossible, the free PeerJS relay server (<code>turn.peerjs.com</code>), which forwards the encrypted game traffic without being able to read it. As with any peer-to-peer connection, <strong>the two players' phones learn each other's IP address</strong>, so only play online with people you know.</p>
+  <p>Nothing about online games is stored by me. Invite links (<code>budget-app.antonolsson.se/dinosaur-wars/join/</code>) only carry the room code and are shared by you through your phone's share sheet, using the app you pick. Room codes stop working when the host leaves the game.</p>
+
   <h2>Advertising, sharing and selling</h2>
-  <p>The game contains no advertising and no advertising SDKs. I do not sell your data, and I do not share it with third parties other than the service providers described above.</p>
+  <p>The game contains no advertising and no advertising SDKs. I do not sell your data, and I do not share it with third parties other than the service providers described above (and, when you choose to play online, the friend you play with and the connection services described under Online co-op).</p>
 
   <h2>Permissions</h2>
-  <p>On Android the app requests only the <code>INTERNET</code> permission, which is used for the analytics and font requests described above. The app does not request access to location, contacts, camera, microphone, photos or files.</p>
+  <p>On Android the app requests only the <code>INTERNET</code> permission, which is used for the analytics and font requests and for online co-op, as described above. The app does not request access to location, contacts, camera, microphone, photos or files.</p>
 
   <h2>Security</h2>
-  <p>All data sent over the network (analytics and font requests) is encrypted in transit using HTTPS (TLS). Data stored on your device is protected by your device's own security features.</p>
+  <p>All data sent over the network is encrypted in transit: analytics and font requests use HTTPS (TLS), and online co-op traffic uses WebRTC's built-in encryption (DTLS). Data stored on your device is protected by your device's own security features.</p>
 
   <h2>Retention and deleting your data</h2>
   <p>Local data (high scores, initials, theme) can be deleted at any time by clearing the app's data in your device settings or by uninstalling the app. Uninstalling also removes the anonymous identifier, so a reinstall starts with a new one.</p>
@@ -109,14 +114,19 @@
   <h2>Typsnitt från Google</h2>
   <p>Spelet hämtar sina typsnitt från Google Fonts (<code>fonts.googleapis.com</code> / <code>fonts.gstatic.com</code>). När enheten är online tar Google emot enhetens IP-adress och tekniska uppgifter i det anropet. Inga speluppgifter skickas. Se Googles integritetspolicy för hur Google hanterar detta.</p>
 
+  <h2>Online-samarbete (spela med en vän på en annan telefon)</h2>
+  <p>Onlinespel är frivilligt och startar bara när du trycker på <em>Two players → Online</em> och skapar eller går med i ett spel. För att koppla ihop de två telefonerna använder appen den kostnadsfria, publika anslutningstjänsten från open source-projektet PeerJS (<code>0.peerjs.com</code>). Tjänsten ser varje telefons IP-adress, ett slumpmässigt anslutnings-ID som innehåller spelets rumskod på sex tecken och de tekniska anslutningsuppgifter som telefonerna utbyter för att hitta varandra. Den får inga speluppgifter, poäng eller initialer.</p>
+  <p>När anslutningen är klar går speldata (knapptryck och spelets läge) direkt mellan de två telefonerna över en krypterad WebRTC-anslutning. För att hitta en väg mellan telefonerna kan de kontakta publika STUN-servrar hos Google (<code>stun.l.google.com</code>) och Cloudflare (<code>stun.cloudflare.com</code>) och, om en direkt väg är omöjlig, PeerJS kostnadsfria reläserver (<code>turn.peerjs.com</code>), som vidarebefordrar den krypterade speltrafiken utan att kunna läsa den. Som vid all peer-to-peer-anslutning <strong>får de två spelarnas telefoner veta varandras IP-adress</strong>, så spela bara online med personer du känner.</p>
+  <p>Jag sparar ingenting om onlinespel. Inbjudningslänkar (<code>budget-app.antonolsson.se/dinosaur-wars/join/</code>) innehåller bara rumskoden och delas av dig via telefonens delningsmeny, med den app du väljer. Rumskoder slutar fungera när värden lämnar spelet.</p>
+
   <h2>Annonser, delning och försäljning</h2>
-  <p>Spelet innehåller ingen annonsering och inga annons-SDK:er. Jag säljer inte dina uppgifter och delar dem inte med tredje part utöver de tjänsteleverantörer som beskrivs ovan.</p>
+  <p>Spelet innehåller ingen annonsering och inga annons-SDK:er. Jag säljer inte dina uppgifter och delar dem inte med tredje part utöver de tjänsteleverantörer som beskrivs ovan (och, när du väljer att spela online, vännen du spelar med och de anslutningstjänster som beskrivs under Online-samarbete).</p>
 
   <h2>Behörigheter</h2>
-  <p>På Android begär appen endast behörigheten <code>INTERNET</code>, som används för statistik- och typsnittsanropen ovan. Appen begär ingen åtkomst till plats, kontakter, kamera, mikrofon, foton eller filer.</p>
+  <p>På Android begär appen endast behörigheten <code>INTERNET</code>, som används för statistik- och typsnittsanropen och för online-samarbete enligt ovan. Appen begär ingen åtkomst till plats, kontakter, kamera, mikrofon, foton eller filer.</p>
 
   <h2>Säkerhet</h2>
-  <p>All data som skickas över nätverket (statistik och typsnitt) krypteras under överföringen med HTTPS (TLS). Uppgifter på enheten skyddas av enhetens egna säkerhetsfunktioner.</p>
+  <p>All data som skickas över nätverket krypteras under överföringen: statistik och typsnitt med HTTPS (TLS) och online-samarbete med WebRTC:s inbyggda kryptering (DTLS). Uppgifter på enheten skyddas av enhetens egna säkerhetsfunktioner.</p>
 
   <h2>Lagring och radering</h2>
   <p>Lokala uppgifter (topplista, initialer, tema) raderar du när som helst genom att rensa appens data i enhetens inställningar eller genom att avinstallera appen. Avinstallation tar också bort den anonyma identifieraren, så en ny installation får en ny.</p>
