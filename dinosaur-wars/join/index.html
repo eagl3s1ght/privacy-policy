@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Join a game – Dinosaur Wars: Clutchstone</title>
+<meta name="description" content="You've been invited to play Dinosaur Wars: Clutchstone online.">
+<style>
+  :root { --fg:#f3ecdf; --muted:#b7c4b4; --bg:#10241c; --card:#17382b; --gold:#f0b429; --teal:#2fbfa8; --line:#3e5c48; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:16px; }
+  main { width:100%; max-width:420px; background:var(--card); border:2px solid var(--gold); border-radius:18px; padding:22px; }
+  .tag { color:var(--gold); font-size:.75rem; font-weight:700; letter-spacing:.14em; margin:0; }
+  h1 { margin:.2em 0 .1em; font-size:1.6rem; line-height:1.15; }
+  .code { font-size:2.6rem; font-weight:800; letter-spacing:.18em; margin:.25em 0; font-variant-numeric:tabular-nums; }
+  .btn { display:flex; align-items:center; justify-content:center; min-height:48px; border-radius:12px; font-weight:700; font-size:1.05rem; text-decoration:none; margin-top:10px; border:0; width:100%; cursor:pointer; }
+  .gold { background:var(--gold); color:#10241c; }
+  .moss { background:#24553c; color:var(--fg); }
+  p { margin:.5em 0; }
+  .muted { color:var(--muted); font-size:.9rem; }
+  ol { padding-left:1.2em; margin:.4em 0; }
+  a { color:var(--teal); }
+  .hide { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <p class="tag">DINOSAUR WARS: CLUTCHSTONE</p>
+  <h1>You're invited to play online</h1>
+  <div id="has-code" class="hide">
+    <p class="muted">Game code</p>
+    <div class="code" id="code"></div>
+    <a class="btn gold" id="open">Open in the app</a>
+    <button class="btn moss" id="copy" type="button">Copy code</button>
+    <p class="muted" id="copied" aria-live="polite"></p>
+  </div>
+  <p id="no-code" class="hide">This invite link has no game code. Ask your friend to send it again.</p>
+  <p><strong>Don't have the app?</strong></p>
+  <p><a id="play" href="https://play.google.com/store/apps/details?id=com.eagl3s1ght.dinosaurwars">Get it on Google Play</a></p>
+  <p><strong>Join by hand:</strong></p>
+  <ol>
+    <li>Open Dinosaur Wars.</li>
+    <li>Tap <em>Two players</em>, then <em>Online</em>.</li>
+    <li>Type the code and tap <em>Join</em>.</li>
+  </ol>
+  <p class="muted">Online play connects the two phones directly. See the <a href="../privacy-policy.html">privacy policy</a>.</p>
+</main>
+<script>
+  (function () {
+    var ABC = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    var params = new URLSearchParams(location.search);
+    var raw = (params.get("code") || params.get("join") || location.hash.slice(1) || "").toUpperCase();
+    var code = "";
+    for (var i = 0; i < raw.length && code.length < 6; i++) if (ABC.indexOf(raw[i]) >= 0) code += raw[i];
+    if (code.length !== 6) { document.getElementById("no-code").classList.remove("hide"); return; }
+    document.getElementById("has-code").classList.remove("hide");
+    document.getElementById("code").textContent = code;
+    document.title = "Join game " + code + " – Dinosaur Wars: Clutchstone";
+    var scheme = "dinosaurwars://join?code=" + code;
+    var play = "https://play.google.com/store/apps/details?id=com.eagl3s1ght.dinosaurwars";
+    var android = /Android/i.test(navigator.userAgent);
+    // On Android an intent: URL opens the app, or Google Play if it isn't installed.
+    document.getElementById("open").href = android
+      ? "intent://join?code=" + code + "#Intent;scheme=dinosaurwars;package=com.eagl3s1ght.dinosaurwars;S.browser_fallback_url=" + encodeURIComponent(play) + ";end"
+      : scheme;
+    document.getElementById("copy").addEventListener("click", function () {
+      var done = function () { document.getElementById("copied").textContent = "Copied " + code + "."; };
+      if (navigator.clipboard) navigator.clipboard.writeText(code).then(done, done); else done();
+    });
+  })();
+</script>
+</body>
+</html>
